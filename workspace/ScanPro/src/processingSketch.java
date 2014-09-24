@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.io.InputStream; 
 import java.io.OutputStream; 
 import java.io.IOException; 
+// need java.util.scanner for keypressed?
 
 public class processingSketch extends PApplet {
 
