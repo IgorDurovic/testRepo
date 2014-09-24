@@ -3,8 +3,7 @@ import processing.data.*;
 import processing.event.*; 
 import processing.opengl.*; 
 
-import java.util.HashMap; 
-import java.util.ArrayList; 
+import java.util.*; 
 import java.io.File; 
 import java.io.BufferedReader; 
 import java.io.PrintWriter; 
@@ -41,17 +40,17 @@ public void setup(){
       cells[a][b] = state;
     }
   }
-  background(256, 256, 256);
+  background(0);
 }
 
 public void draw(){
   for(int a = 0; a < width/cellDim; a++){
     for(int b = 0; b < height/cellDim; b++){
       if(cells[a][b] == 1){
-        fill(0);
+        fill(random(256), random(256), random(256));
       }
       else{
-        fill(256, 256, 256);
+        fill(0);
       }
       rect(cellDim*a, cellDim*b, cellDim, cellDim);
     }
@@ -88,13 +87,16 @@ public void cycle(){
           }
         }
       }
+      Random rnd = new Random();
       if(savedCells[a][b] == 1){
-        if(neighbors<2||neighbors>3){
+    	double gauss = rnd.nextGaussian();
+        if((neighbors<2||neighbors>3) && Math.abs(gauss)<2){
           cells[a][b] = 0;
         }
       }
       else{
-        if(neighbors == 3){
+    	double gauss = rnd.nextGaussian();
+        if(neighbors == 3 && Math.abs(gauss)<2){
           cells[a][b] = 1;
         }
       }
