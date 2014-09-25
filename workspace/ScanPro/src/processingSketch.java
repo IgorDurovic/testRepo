@@ -90,13 +90,13 @@ public void cycle(){
       Random rnd = new Random();
       if(savedCells[a][b] == 1){
     	double gauss = rnd.nextGaussian();
-        if((neighbors<2||neighbors>3) && Math.abs(gauss)<2){
+        if((neighbors<2||neighbors>3) || Math.abs(gauss)>3){
           cells[a][b] = 0;
         }
       }
       else{
     	double gauss = rnd.nextGaussian();
-        if(neighbors == 3 && Math.abs(gauss)<2){
+        if(neighbors == 3 || Math.abs(gauss)>3){
           cells[a][b] = 1;
         }
       }
