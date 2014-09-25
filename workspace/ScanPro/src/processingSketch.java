@@ -48,7 +48,7 @@ public void draw(){
   for(int a = 0; a < width/cellDim; a++){
     for(int b = 0; b < height/cellDim; b++){
       if(cells[a][b] == 1){
-        fill(random(256), random(256), random(256));
+        fill(256, 256, 256);
       }
       else{
         fill(0);
@@ -79,12 +79,10 @@ public void cycle(){
       int neighbors = 0;
       for(int c = a-1; c <= a+1; c++){
         for(int d = b-1; d <= b+1; d++){
-          if(((c>=0)&&(c<width/cellDim))&&((d>=0)&&(d<height/cellDim))) { // Make sure you are not out of bounds
-            if(!((c==a)&&(d==b))) { // Make sure to to check against self
-              if(savedCells[c][d]==1){
-                neighbors++; // Check alive neighbours and count them
-              }
-            } // End of if
+          if(((c>=0)&&(c<width/cellDim))&&((d>=0)&&(d<height/cellDim))) {
+            if(!((c==a)&&(d==b))) {
+              neighbors += savedCells[c][d];
+            }
           }
         }
       }
